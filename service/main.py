@@ -1,3 +1,4 @@
+from typing_extensions import Self
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from config import Config
@@ -6,6 +7,20 @@ from config import Config
 
 app = Flask(__name__)
 app.config.from_object(Config)
+
+engine = SQLAlchemy.create_engine(
+    self=Self,
+    sa_url=Config.SQLALCHEMY_DATABASE_URI,
+    engine_opts={},
+)
+
+try:
+    with engine.connect() as conn:
+        conn.execute("commit")
+        # Do not substitute user-supplied database names here.
+        conn.execute('CREATE DATABASE "covid-19"')
+except:
+    print("database already created")
 
 db = SQLAlchemy(app)
 
