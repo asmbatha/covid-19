@@ -7,7 +7,11 @@ from config import Config
 app = Flask(__name__)
 app.config.from_object(Config)
 
+# print("SQLALCHEMY_DATABASE_URI", Config.SQLALCHEMY_DATABASE_URI)
+
 db = SQLAlchemy(app)
+
+# db.create_engine(Config.SQLALCHEMY_DATABASE_URI)
 
 import init_db
 
@@ -26,4 +30,4 @@ def hello():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0", debug=True)

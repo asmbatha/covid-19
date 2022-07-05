@@ -8,7 +8,7 @@ export default function GlobalCases() {
 
 
     useEffect(() => {
-        fetch('/global_cases')
+        fetch('/api/global_cases')
             .then(res => res.json())
             .then(data => {
                 setGlobalCases(data)
