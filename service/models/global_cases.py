@@ -2,6 +2,8 @@
 from service import db
 from sqlalchemy.dialects.postgresql import JSON
 from service.models.base import Base
+import json
+import requests
 
 
 class GlobalCases(Base):
@@ -15,6 +17,29 @@ class GlobalCases(Base):
 
     def __repr__(self):
         return "<GlobalCases %r>" % (self.data)
+
+
+globalCaseSchema = {
+    "type": "object",
+    "properties": {
+        "confirmed": {"type": "number"},
+        "deaths": {"type": "number"},
+        "population": {"type": "number"},
+    },
+    "required": ["confirmed", "deaths", "population"],
+}
+
+
+def init_global_cases():
+    url = "https://covid-api.mmediagroup.fr/v1//cases?country=Global"
+    req = requests.get(url)
+    data = req.content
+    json_data = json.loads(data)["All"]
+
+    if "population" in json_data and "confirmed" in json_data and "deaths" in json_data:
+        addGlobalCase(json_data)
+    else:
+        print("invalid global_cases")
 
 
 def addGlobalCase(input):
