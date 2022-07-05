@@ -1,25 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+
+import GlobalCases from './components/GlobalCases';
 import logo from './logo.zenysis.png';
 import './App.css';
 
 function App() {
-    const [currentTime, setCurrentTime] = useState(0)
-
-    useEffect(() => {
-        fetch('/api/time')
-            .then(res => res.json())
-            .then(data => {
-                setCurrentTime(data.time)
-            })
-    }, [])
-
     return (
         <div className="App">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
             </header>
             <main>
-                {currentTime}
+                <h2>Global Covid-19 Cases</h2>
+                <GlobalCases />
             </main>
         </div>
     );
