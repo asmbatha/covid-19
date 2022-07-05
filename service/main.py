@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from service.config import Config
+from config import Config
 
 # from service.models.global_cases import GlobalCases
 
@@ -9,9 +9,9 @@ app.config.from_object(Config)
 
 db = SQLAlchemy(app)
 
-import service.init_db
+import init_db
 
-from service.models.global_cases import getGlobalCase
+from models.global_cases import getGlobalCase
 
 
 # Sample HTTP error handling

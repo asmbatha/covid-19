@@ -1,7 +1,7 @@
 # Import the database object (db) from the main application module
-from service import db
+from main import db
 from sqlalchemy.dialects.postgresql import JSON
-from service.models.base import Base
+from models.base import Base
 import json
 import requests
 
