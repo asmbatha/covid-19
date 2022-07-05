@@ -3,7 +3,7 @@
 ### Prerequisite
 Make sure you have the following installed on your computer.
 
-* Docker
+* Docker - also make sure your docker daemon is running
 * Nodejs
 * Python3
 
