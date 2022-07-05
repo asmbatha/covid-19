@@ -12,7 +12,7 @@ Make sure you have the following installed on your computer.
 sh start.sh
 ```
 
-In your terminal, navigate to the root directory and simply run `sh start.sh`.  
+In your terminal, navigate to the root directory of this repo and simply run `sh start.sh`.  
 
 Be patient as we set up the database, api, and client.
 The web app should open automatically on your browser.  
